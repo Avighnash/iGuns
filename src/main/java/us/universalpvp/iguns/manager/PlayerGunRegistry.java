@@ -13,6 +13,10 @@ import java.util.Set;
 /**
  * Created by avigh on 8/12/2016.
  */
+ 
+ /**
+  * Credit to @2008Choco too for this idea with most of the code.
+  */
 public class PlayerGunRegistry {
 
     private Map<Player, Set<Gun>> equipedGuns = new HashMap<>();
