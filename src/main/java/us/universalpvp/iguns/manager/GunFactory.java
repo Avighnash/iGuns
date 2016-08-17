@@ -11,6 +11,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+<<<<<<< HEAD
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import us.universalpvp.iguns.events.gun.*;
@@ -20,6 +21,13 @@ import us.universalpvp.iguns.manager.interfaces.Trailable;
 
 import java.util.HashMap;
 import java.util.Map;
+=======
+import org.bukkit.metadata.FixedMetadataValue;
+import us.universalpvp.iguns.events.*;
+import us.universalpvp.iguns.iGunsMain;
+import us.universalpvp.iguns.manager.interfaces.Scopable;
+import us.universalpvp.iguns.manager.interfaces.Trailable;
+>>>>>>> origin/master
 
 /**
  * Created by avigh on 8/11/2016.
@@ -67,12 +75,15 @@ public class GunFactory implements Listener {
         Projectile bullet = toShoot.onInteract(e);
         bullet.setMetadata(toShoot.getName(), new FixedMetadataValue(main, toShoot.getName()));
         bullet.getLocation().setPitch(bullet.getLocation().getPitch() + toShoot.getRecoil());
+<<<<<<< HEAD
 
         long rof = toShoot.getRateOfFire();
 
         if (System.currentTimeMillis() - cooldown.getOrDefault(toShoot.getBukkitItemStack(), rof) < rof)
             return;
         cooldown.put(toShoot.getBukkitItemStack(), System.currentTimeMillis());
+=======
+>>>>>>> origin/master
 
         Bukkit.getPluginManager().callEvent(new GunShootEvent(p, toShoot, bullet));
     }
@@ -80,10 +91,15 @@ public class GunFactory implements Listener {
     @EventHandler
     public void onHit(EntityDamageByEntityEvent e) {
         final Entity entity = e.getEntity();
+<<<<<<< HEAD
 
         if (e.getDamager() instanceof Player) {
             if (entity instanceof Projectile) {
                 Projectile bullet = (Projectile) e.getEntity();
+=======
+        if (entity instanceof Projectile) {
+            Projectile bullet = (Projectile) e.getEntity();
+>>>>>>> origin/master
 
                 manager.getRegisteredGuns().stream().filter(gun -> bullet.hasMetadata(gun.getName()))
                         .filter(gun -> gun.getName() == bullet.getMetadata(gun.getName()).toString()).forEach(gun -> {
@@ -103,10 +119,18 @@ public class GunFactory implements Listener {
         manager.getRegisteredGuns().stream().filter(gun -> p.getItemInHand().isSimilar(gun.getBukkitItemStack()))
                 .filter(gun -> gun instanceof Scopable).forEach(gun -> {
             if (e.isSneaking()) {
+<<<<<<< HEAD
                 ((Scopable) gun).scope(p);
                 Bukkit.getPluginManager().callEvent(new PlayerScopeEvent(p, gun));
             } else {
                 ((Scopable) gun).unscope(p);
+=======
+                ((Scopable) gun).scope();
+
+                Bukkit.getPluginManager().callEvent(new PlayerScopeEvent(p, gun));
+            } else {
+                ((Scopable) gun).unscope();
+>>>>>>> origin/master
                 Bukkit.getPluginManager().callEvent(new PlayerUnscopeEvent(p, gun));
             }
         });

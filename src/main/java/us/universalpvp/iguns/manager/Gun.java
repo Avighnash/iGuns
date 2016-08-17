@@ -46,4 +46,8 @@ public abstract class Gun {
     public abstract void onHit(EntityDamageByEntityEvent e);
 
     public abstract void onBlockHit(ProjectileHitEvent e);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
