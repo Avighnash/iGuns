@@ -2,6 +2,7 @@ package us.universalpvp.iguns.manager;
 
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -32,12 +33,17 @@ public abstract class Gun {
 
     public abstract double getReloadTime();
 
-    public abstract double getRecoilAmount();
+    public abstract float getRecoil();
 
     public abstract String getPermission();
+
+    public abstract double getMagnitude();
+
+    public abstract long getRateOfFire();
 
     public abstract Projectile onInteract(PlayerInteractEvent e);
 
     public abstract void onHit(EntityDamageByEntityEvent e);
 
+    public abstract void onBlockHit(ProjectileHitEvent e);
 }

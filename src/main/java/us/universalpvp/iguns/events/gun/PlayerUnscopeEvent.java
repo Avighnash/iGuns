@@ -1,4 +1,4 @@
-package us.universalpvp.iguns.events;
+package us.universalpvp.iguns.events.gun;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -8,15 +8,15 @@ import us.universalpvp.iguns.manager.Gun;
 /**
  * Created by avigh on 8/13/2016.
  */
-public class GunEquipEvent extends Event {
+public class PlayerUnscopeEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private final Player holder;
+    private final Player scoper;
     private final Gun gun;
 
-    public GunEquipEvent(Player holder, Gun gun) {
-        this.holder = holder;
+    public PlayerUnscopeEvent(Player scoper, Gun gun) {
+        this.scoper = scoper;
         this.gun = gun;
     }
 
@@ -24,9 +24,10 @@ public class GunEquipEvent extends Event {
         return gun;
     }
 
-    public Player getHolder() {
-        return holder;
+    public Player getPlayer() {
+        return scoper;
     }
+
 
     @Override
     public HandlerList getHandlers() {

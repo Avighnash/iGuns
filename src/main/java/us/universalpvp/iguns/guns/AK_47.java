@@ -2,9 +2,11 @@ package us.universalpvp.iguns.guns;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -36,12 +38,12 @@ public class AK_47 extends Gun {
 
     @Override
     public double getReloadTime() {
-        return 1000000;
+        return 10;
     }
 
     @Override
-    public double getRecoilAmount() {
-        return 10;
+    public float getRecoil() {
+        return 5;
     }
 
     @Override
@@ -50,8 +52,15 @@ public class AK_47 extends Gun {
     }
 
     @Override
+    public double getMagnitude() {
+        return 1;
+    }
+
+    @Override
     public Projectile onInteract(PlayerInteractEvent e) {
-        e.getPlayer().sendMessage("Banana");
+        Player player = e.getPlayer();
+
+        player.sendMessage("Banana");
 
         Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation(), EntityType.SNOWBALL);
         return snowball;
@@ -59,6 +68,13 @@ public class AK_47 extends Gun {
 
     @Override
     public void onHit(EntityDamageByEntityEvent e) {
-        e.getEntity().sendMessage("U suck boi");
+        if (e.getEntity() instanceof Player) {
+            e.getEntity().sendMessage("Yo");
+        }
+    }
+
+    @Override
+    public void onBlockHit(ProjectileHitEvent e) {
+
     }
 }

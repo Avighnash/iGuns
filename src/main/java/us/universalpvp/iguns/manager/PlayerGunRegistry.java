@@ -2,8 +2,8 @@ package us.universalpvp.iguns.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import us.universalpvp.iguns.events.GunEquipEvent;
-import us.universalpvp.iguns.events.GunUnequipEvent;
+import us.universalpvp.iguns.events.gun.GunEquipEvent;
+import us.universalpvp.iguns.events.gun.GunUnequipEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
